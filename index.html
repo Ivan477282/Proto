@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МойБанк - Мобильное приложение</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body id="body">
+    <div class="app-container">
+        <!-- Заголовок приложения -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">LuciferBANK</h1>
+                <div class="user-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <!-- Вкладка Главная -->
+            <div class="tab-content active" id="home-tab">
+                <div class="balance-card">
+                    <h2>Баланс счета</h2>
+                    <div class="balance-amount">125 430,50 ₽</div>
+                    <div class="card-number">0000 0000 0000 1234</div>
+                </div>
+
+                <div class="quick-actions">
+                    <h3>Быстрые действия</h3>
+                    <div class="actions-grid">
+                        <button class="action-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Перевести</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Пополнить</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-receipt"></i>
+                            <span>Платежи</span>
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-history"></i>
+                            <span>История</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="recent-transactions">
+                    <h3>Последние операции</h3>
+                    <div class="transaction-item">
+                        <div class="transaction-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <div class="transaction-title">Покупка в магазине</div>
+                            <div class="transaction-date">Сегодня, 14:30</div>
+                        </div>
+                        <div class="transaction-amount negative">-1 250,00 ₽</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <div class="transaction-title">Пополнение счета</div>
+                            <div class="transaction-date">Вчера, 09:15</div>
+                        </div>
+                        <div class="transaction-amount positive">+5 000,00 ₽</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вкладка Пополнение -->
+            <div class="tab-content" id="deposit-tab">
+                <div class="deposit-section">
+                    <h2>Пополнение счета</h2>
+                    
+                    <!-- Форма пополнения -->
+                    <div class="deposit-form">
+                        <div class="form-group">
+                            <label for="deposit-amount">Сумма пополнения</label>
+                            <div class="amount-input-container">
+                                <input type="number" id="deposit-amount" placeholder="0" min="1" max="1000000" step="0.01">
+                                <span class="currency-symbol">₽</span>
+                            </div>
+                            <div class="amount-suggestions">
+                                <button type="button" class="amount-btn" data-amount="1000">1 000 ₽</button>
+                                <button type="button" class="amount-btn" data-amount="5000">5 000 ₽</button>
+                                <button type="button" class="amount-btn" data-amount="10000">10 000 ₽</button>
+                                <button type="button" class="amount-btn" data-amount="25000">25 000 ₽</button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="deposit-method">Способ пополнения</label>
+                            <select id="deposit-method">
+                                <option value="card">Банковская карта</option>
+                                <option value="bank-transfer">Банковский перевод</option>
+                                <option value="cash">Наличные через банкомат</option>
+                                <option value="mobile">Мобильный платеж</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group card-details" id="card-details">
+                            <label for="card-number">Номер карты</label>
+                            <input type="text" id="card-number" placeholder="0000 0000 0000 0000" maxlength="19">
+                            
+                            <div class="card-row">
+                                <div class="card-col">
+                                    <label for="card-expiry">Срок действия</label>
+                                    <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
+                                </div>
+                                <div class="card-col">
+                                    <label for="card-cvv">CVV</label>
+                                    <input type="text" id="card-cvv" placeholder="000" maxlength="3">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="deposit-btn" id="deposit-submit">
+                            <i class="fas fa-plus-circle"></i>
+                            Пополнить счет
+                        </button>
+                    </div>
+                    
+                    <!-- История пополнений -->
+                    <div class="deposit-history">
+                        <h3>Последние пополнения</h3>
+                        <div class="history-item">
+                            <div class="history-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-title">Пополнение картой</div>
+                                <div class="history-date">Сегодня, 14:30</div>
+                                <div class="history-method">Карта **** 4567</div>
+                            </div>
+                            <div class="history-amount positive">+5 000,00 ₽</div>
+                        </div>
+                        
+                        <div class="history-item">
+                            <div class="history-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-title">Банковский перевод</div>
+                                <div class="history-date">Вчера, 16:45</div>
+                                <div class="history-method">СБП переводом</div>
+                            </div>
+                            <div class="history-amount positive">+12 500,00 ₽</div>
+                        </div>
+                        
+                        <div class="history-item">
+                            <div class="history-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="history-details">
+                                <div class="history-title">Мобильный платеж</div>
+                                <div class="history-date">25 июня, 12:20</div>
+                                <div class="history-method">Apple Pay</div>
+                            </div>
+                            <div class="history-amount positive">+3 000,00 ₽</div>
+                        </div>
+                    </div>
+                </div>
+            </div>                
+            <!-- Вкладка Платежи -->
+            <div class="tab-content" id="payments-tab">
+                <div class="payments-section">
+                    <h2>Платежи и переводы</h2>
+                    <div class="payment-categories">
+                        <div class="payment-category">
+                            <img src="images/CryptoBot.jpg" class="img"></img>
+                            <span>CryptoBot</span>
+                        </div>
+                        <div class="payment-category">
+                            <img src="images/SBP.jpg" class="img"></img>
+                            <span>SBP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+
+
+            <!-- Вкладка Настройки -->
+            <div class="tab-content" id="settings-tab">
+                <div class="settings-section">
+                    <h2>Настройки</h2>
+                    
+                    <!-- Навигация по подвкладкам настроек -->
+                    <div class="settings-tabs">
+                        <button class="settings-tab-btn active" data-tab="personal">Личные данные</button>
+                        <button class="settings-tab-btn" data-tab="security">Безопасность</button>
+                        <button class="settings-tab-btn" data-tab="language">Язык</button>
+                    </div>
+
+                    <!-- Контент подвкладок настроек -->
+                    <div class="settings-content">
+                        <!-- Личные данные -->
+                        <div class="settings-tab-content active" id="personal-settings">
+                            <div class="settings-group">
+                                <h3>Персональная информация</h3>
+                                <div class="settings-item">
+                                    <label>Имя и фамилия</label>
+                                    <input type="text" value="Иван Петров" readonly>
+                                </div>
+                                <div class="settings-item">
+                                    <label>Номер телефона</label>
+                                    <input type="tel" value="+7 (999) 123-45-67" readonly>
+                                </div>
+                                <div class="settings-item">
+                                    <label>Email</label>
+                                    <input type="email" value="ivan.petrov@example.com">
+                                    <button class="edit-btn">Изменить</button>
+                                </div>
+                                <div class="settings-item">
+                                    <label>Дата рождения</label>
+                                    <input type="date" value="1990-05-15" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Безопасность -->
+                        <div class="settings-tab-content" id="security-settings">
+                            <div class="settings-group">
+                                <h3>Безопасность и конфиденциальность</h3>
+                                <div class="settings-item">
+                                    <label>PIN-код</label>
+                                    <button class="change-btn">Изменить PIN</button>
+                                </div>
+                                <div class="settings-item">
+                                    <label>Биометрическая авторизация</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="biometric" checked>
+                                        <label for="biometric" class="slider"></label>
+                                    </div>
+                                </div>
+                                <div class="settings-item">
+                                    <label>SMS-уведомления</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="sms-notifications" checked>
+                                        <label for="sms-notifications" class="slider"></label>
+                                    </div>
+                                </div>
+                                <div class="settings-item">
+                                    <label>Push-уведомления</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="push-notifications" checked>
+                                        <label for="push-notifications" class="slider"></label>
+                                    </div>
+                                </div>
+                                <div class="settings-item">
+                                    <label>Автовыход из приложения</label>
+                                    <select>
+                                        <option value="5">5 минут</option>
+                                        <option value="10" selected>10 минут</option>
+                                        <option value="30">30 минут</option>
+                                        <option value="60">1 час</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Язык -->
+                        <div class="settings-tab-content" id="language-settings">
+                            <div class="settings-group">
+                                <h3>Язык и регион</h3>
+                                <div class="settings-item">
+                                    <label>Язык интерфейса</label>
+                                    <select>
+                                        <option value="ru" selected>Русский</option>
+                                        <option value="en">English</option>
+                                        <option value="zh">中文</option>
+                                    </select>
+                                </div>
+                                <div class="settings-item">
+                                    <label>Валюта</label>
+                                    <select>
+                                        <option value="RUB" selected>Российский рубль (₽)</option>
+                                        <option value="USD">Доллар США ($)</option>
+                                        <option value="EUR">Евро (€)</option>
+                                    </select>
+                                </div>
+                                <div class="settings-item">
+                                    <label>Часовой пояс</label>
+                                    <select>
+                                        <option value="Europe/Moscow" selected>Москва (UTC+3)</option>
+                                        <option value="Europe/Kaliningrad">Калининград (UTC+2)</option>
+                                        <option value="Asia/Yekaterinburg">Екатеринбург (UTC+5)</option>
+                                        <option value="Asia/Novosibirsk">Новосибирск (UTC+7)</option>
+                                    </select>
+                                </div>
+                                <div class="settings-item">
+                                    <label>Формат даты</label>
+                                    <select>
+                                        <option value="dd.mm.yyyy" selected>ДД.ММ.ГГГГ</option>
+                                        <option value="mm.dd.yyyy">ММ.ДД.ГГГГ</option>
+                                        <option value="yyyy-mm-dd">ГГГГ-ММ-ДД</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Нижняя навигация -->
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-tab="home">
+                <i class="fas fa-home"></i>
+                <span>Главная</span>
+            </button>
+            <button class="nav-btn" data-tab="deposit">
+                <i class="fas fa-plus-circle"></i>
+                <span>Пополнение</span>
+            </button>    
+            <button class="nav-btn" data-tab="payments">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Платежи</span>
+            </button>
+            <button class="nav-btn" data-tab="settings">
+                <i class="fas fa-cog"></i>
+                <span>Настройки</span>
+            </button>
+        </nav>
+    </div>
+
+   <script src="https://telegram.org/js/telegram-web-app.js"></script> 
+    
+    <script type="text/javascript">
+        const initData = req.query.init_data; // Получаем initData из запроса  
+        const userData = JSON.parse(Buffer.from(initData, 'base64').toString('utf-8')); // Декодируем initData  
+        console.log('User Data:', userData); // Выводим данные пользователя  
+        const id = '1'
+        var script = document.createElement('script');
+        if(id = '1'){
+          script.src = 'Node.js';
+        }else{
+          script.src = 'Node2.js';
+        }
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
