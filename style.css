@@ -1,0 +1,754 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.app-container {
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок */
+.app-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    padding-top: 40px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.user-avatar {
+    font-size: 32px;
+    opacity: 0.9;
+}
+
+/* Основной контент */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    padding-bottom: 100px;
+    overflow-y: auto;
+}
+
+/* Управление вкладками */
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Карточка баланса */
+.balance-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.balance-card h2 {
+    font-size: 16px;
+    opacity: 0.9;
+    margin-bottom: 8px;
+}
+
+.balance-amount {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.card-number {
+    font-size: 14px;
+    opacity: 0.8;
+    letter-spacing: 2px;
+}
+
+/* Быстрые действия */
+.quick-actions {
+    margin-bottom: 30px;
+}
+
+.quick-actions h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.action-btn {
+    background: white;
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.action-btn i {
+    font-size: 24px;
+    color: #667eea;
+}
+
+.action-btn span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Последние транзакции */
+.recent-transactions h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f5f7fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.transaction-icon i {
+    color: #667eea;
+    font-size: 16px;
+}
+
+.transaction-details {
+    flex: 1;
+}
+
+.transaction-title {
+    font-weight: 500;
+    color: #333;
+}
+
+.transaction-date {
+    font-size: 12px;
+    color: #999;
+}
+
+.transaction-amount {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.transaction-amount.positive {
+    color: #4caf50;
+}
+
+.transaction-amount.negative {
+    color: #f44336;
+}
+
+/* Пополнение */
+.deposit-section h2 {
+    font-size: 22px;
+    margin-bottom: 25px;
+    color: #333;
+}
+.deposit-form {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+.amount-input-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+.amount-input-container input {
+    width: 100%;
+    padding: 16px 50px 16px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    background: #f8f9fa;
+}
+.amount-input-container input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+.currency-symbol {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    font-weight: 600;
+    color: #667eea;
+}
+.amount-suggestions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+.amount-btn {
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.amount-btn:hover {
+    border-color: #667eea;
+    background: #f8f9fa;
+    color: #667eea;
+}
+.amount-btn.selected {
+    border-color: #667eea;
+    background: #667eea;
+    color: white;
+}
+.form-group select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 16px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+.card-details {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+.card-details input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+}
+.card-details input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+}
+.card-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.card-col label {
+    margin-bottom: 5px;
+}
+.deposit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+.deposit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+.deposit-btn:active {
+    transform: translateY(0);
+}
+.deposit-btn i {
+    font-size: 20px;
+}
+/* История пополнений */
+.deposit-history {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+.deposit-history h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+.history-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.history-item:last-child {
+    border-bottom: none;
+}
+.history-icon {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+.history-icon i {
+    color: white;
+    font-size: 18px;
+}
+.history-details {
+    flex: 1;
+}
+.history-title {
+    font-weight: 600;
+    color: #333;
+    font-size: 16px;
+}
+.history-date {
+    font-size: 12px;
+    color: #999;
+    margin-top: 2px;
+}
+.history-method {
+    font-size: 13px;
+    color: #666;
+    margin-top: 2px;
+}
+.history-amount {
+    font-weight: 700;
+    font-size: 18px;
+}
+.history-amount.positive {
+    color: #4caf50;
+}
+
+/* Карты */
+.cards-section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.card-item {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-visual {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.card-visual.credit {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.card-type {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: 20px;
+}
+
+.card-number {
+    font-size: 18px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.card-holder {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.card-balance {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Платежи */
+.payments-section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.payment-categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.payment-category {
+    background: white;
+    border-radius: 12px;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.payment-category:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.payment-category i {
+    font-size: 28px;
+    color: #667eea;
+}
+
+.payment-category span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+}
+
+.img {
+    height: 40px;
+    weight: 40px;
+}
+
+/* Настройки */
+.settings-section h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Вкладки настроек - ИСПРАВЛЕННЫЕ СТИЛИ */
+.settings-tabs {
+    display: flex;
+    background-color: #f5f7fa;
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 25px;
+}
+
+.settings-tab-btn {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.settings-tab-btn.active {
+    background: white;
+    color: #667eea;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.settings-content {
+    position: relative;
+}
+
+/* КЛЮЧЕВЫЕ ИСПРАВЛЕНИЯ: Стили для контента вкладок настроек */
+.settings-tab-content {
+    display: none; /* Скрываем все вкладки по умолчанию */
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.settings-tab-content.active {
+    display: block; /* Показываем только активную вкладку */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.settings-group {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.settings-group h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.settings-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.settings-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.settings-item label {
+    font-weight: 500;
+    color: #333;
+    flex: 1;
+}
+
+.settings-item input,
+.settings-item select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    max-width: 200px;
+}
+
+.settings-item input[readonly] {
+    background-color: #f5f7fa;
+    color: #666;
+}
+
+.edit-btn,
+.change-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.edit-btn:hover,
+.change-btn:hover {
+    background: #5a6fd8;
+}
+
+/* Переключатели */
+.toggle-switch {
+    position: relative;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #667eea;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Нижняя навигация */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    padding: 10px 0;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.nav-btn.active {
+    color: #667eea;
+}
+
+.nav-btn i {
+    font-size: 20px;
+}
+
+.nav-btn span {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .app-container {
+        max-width: 100%;
+    }
+    
+    .main-content {
+        padding: 15px;
+    }
+    
+    .actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .payment-categories {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .settings-tab-btn {
+        font-size: 12px;
+        padding: 10px 12px;
+    }
+    
+    .settings-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .settings-item input,
+    .settings-item select {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
